@@ -1,3 +1,11 @@
+# References
+Radio Button: https://www.pluralsight.com/guides/how-to-use-radio-buttons-in-reactjs
+https://magnusbenoni.com/radio-buttons-react/
+Router: https://a-tothe-z.tistory.com/21
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

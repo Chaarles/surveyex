@@ -1,26 +1,77 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import {} from "./Result";
+import { BrowserRouter } from "react-router-dom";
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      gender: "Male",
+      animal: "Tiger",
+    };
+    this.onChangeGenderValue = this.onChangeGenderValue.bind(this);
+    this.onChangeAnimalValue = this.onChangeAnimalValue.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  //Selected Radio Button
+  onChangeGenderValue(event) {
+    this.setState({
+      selectedGenderOption: event.target.value,
+    });
+  }
+  onChangeAnimalValue(event) {
+    this.setState({
+      selectedAnimalOption: event.target.value,
+    });
+  }
+
+  formSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.selectedGenderOption);
+    console.log(this.state.selectedAnimalOption);
+  }
+
+  render() {
+    return (
+      // Form Grouping
+      <>
+        <h1>Club R46</h1>
+        <h2>Today's Survey</h2>
+        <h3>
+          If you're going to join our Club,
+          <br />
+          please answer a simple survey!
+          <br />
+          We'll help you to find the best matches through this survey results :)
+        </h3>
+        <br />
+        <form onSubmit={this.formSubmit}>
+          <h3>Please select your gender.</h3>
+          <div className="gender">
+            <input name="gender" type="radio" value="Male" checked={this.state.selectedGenderOption === "Male"} onChange={this.onChangeGenderValue} />
+            Male
+            <input name="gender" type="radio" value="Female" checked={this.state.selectedGenderOption === "Female"} onChange={this.onChangeGenderValue} />
+            Female
+          </div>
+          Selected option is : {this.state.selectedGenderOption}
+          <br />
+        </form>
+
+        <form onSubmit={this.formSubmit}>
+          <h3>Please select your favorite animal.</h3>
+          <div className="animal">
+            <input name="animal" type="radio" value="Tiger" checked={this.state.selectedAnimalOption === "Tiger"} onChange={this.onChangeAnimalValue} />
+            Tiger
+            <input name="animal" type="radio" value="Elephant" checked={this.state.selectedAnimalOption === "Elephant"} onChange={this.onChangeAnimalValue} />
+            Elephant
+          </div>
+          Selected option is : {this.state.selectedAnimalOption} <br />
+          <button className="btn btn-default" type="submit">
+            Submit
+          </button>
+        </form>
+      </>
+    );
+  }
 }
-
 export default App;
