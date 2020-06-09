@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {} from "./Result";
+import Result from "./Result";
 import { BrowserRouter } from "react-router-dom";
+import axios from "axios";
 class App extends Component {
   constructor() {
     super();
@@ -31,12 +32,20 @@ class App extends Component {
     console.log(this.state.selectedAnimalOption);
   }
 
+   /* onClick(){
+    axios.post("./Result", {
+      params: {
+       this.state: this.setState;selectedGenderOption
+      }
+    });
+  } */
+
   render() {
     return (
       // Form Grouping
       <>
-        <h1>Club R46</h1>
-        <h2>Today's Survey</h2>
+        <h1>Club R46</h1><br/>
+        <h2>Today's Survey</h2><br/>
         <h3>
           If you're going to join our Club,
           <br />
@@ -66,9 +75,11 @@ class App extends Component {
             Elephant
           </div>
           Selected option is : {this.state.selectedAnimalOption} <br />
-          <button className="btn btn-default" type="submit">
+
+          <button onClick={onclick}>
             Submit
           </button>
+
         </form>
       </>
     );
