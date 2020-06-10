@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Result extends Component {
   render() {
@@ -8,21 +9,21 @@ class Result extends Component {
         {/* Gender */}
         Gender
         <br />
-        <table class="table table-hover table-bordered">
+        <table className="table table-hover table-bordered">
           <thead>
             <tr>
-              <th class="male">
+              <th className="male">
                 <span>Male</span>
               </th>
-              <th class="female">
+              <th className="female">
                 <span>Female</span>
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="maleNum">1</td>
-              <td class="femaleNum">2</td>
+              <td className="maleNum">1</td>
+              <td className="femaleNum">2</td>
             </tr>
           </tbody>
         </table>
@@ -31,27 +32,29 @@ class Result extends Component {
         Animal
         <br />
         <br />
-        <table class="table table-hover table-bordered">
+        <table className="table table-hover table-bordered">
           <thead>
             <tr>
-              <th class="tiger">
+              <th className="tiger">
                 <span>Tiger</span>
               </th>
-              <th class="elephant">
+              <th className="elephant">
                 <span>Elephant</span>
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="tigerNum">3</td>
-              <td class="elephantNum">4</td>
+              <td className="tigerNum">3</td>
+              <td className="elephantNum">4</td>
             </tr>
           </tbody>
         </table>
         <br />
         <h3>Thank you for your survey!</h3>
+        <Link to="/">
         <button>Back</button>
+        </Link>
       </div>
     );
   }
