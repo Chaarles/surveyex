@@ -1,29 +1,44 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Axios from "axios";
 
 const Home = () => {
   // 함수형에서 state를 쓸 수 있도록 useState란 Hooks 추가
   const [gender, setGender] = useState("");
   const [animal, setAnimal] = useState("");
+  const history = useHistory();
 
   // setter
   function onChangeGenderValue(event) {
-    console.log(gender);
+    console.log(event.target.value);
     setGender(event.target.value);
   }
   function onChangeAnimalValue(event) {
-    console.log(animal);
+    console.log(event.target.value);
     setAnimal(event.target.value);
   }
 
   // Axios 설정
   function onClickAxios() {
     console.log(gender);
-
-    Axios.post("http://localhost:4000/", { gender: gender, animal: animal })
+    // { gender: gender, animal: animal }
+    Axios.post("/submit", {
+      gender: gender,
+      animal: animal,
+    })
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+    Axios.get("/result")
+      .then((res) => {
+        console.log(res.data);
+
+        const data = res.data;
+        history.push("/result", { data: data });
       })
       .catch((e) => {
         console.log(e);
@@ -83,9 +98,7 @@ const Home = () => {
         Elephant
       </div>
       Selected option is : {animal} <br />
-      <Link to="/result">
         <button onClick={onClickAxios}>Submit</button>
-      </Link>
     </>
   );
 };
